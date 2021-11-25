@@ -112,7 +112,7 @@ def main():
 
     # Create MineRL environment
     # This version has basic crafting options available
-    env = gym.make("MineRLObtainDiamondDense-v0")
+    env = gym.make("MineRLObtainIronPickaxeDense-v0")
     while True:
         # Play until user says otherwise
         # Reset environment (create a new world)
@@ -125,7 +125,11 @@ def main():
             action = show_observation_and_get_action(env, observation)
             # Execute action on the environment and proceed to next frame
             observation, reward, done, info = env.step(action)
-
+            data = minerl.data.make("MineRLObtainIronPickaxeDense-v0")
+            # for obs, rew, done, act in data.batch_iter(num_epochs=1, batch_size=32):
+            #     print(obs)
+            #     print(rew)
+            #     print(act)
     # Close environment properly
     env.close()
 
